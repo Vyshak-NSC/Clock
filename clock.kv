@@ -9,15 +9,56 @@
         markup: True
         font_size: '60sp'
         color:1,1,1,1
-        height:root.height*.76
+        height:root.height*.95
         size_hint:(1,None)
         valign: 'middle'
         halign: 'center'
         text_size:root.width, root.height
+
 <StopWatchScreen>:
     name:'stopwatch'
     Label:
-        text:'stopwatch'
+        text: '00:00:00'
+        id : stopwatch
+        markup: True
+        font_size: '60sp'
+        color:1,1,1,1
+        height:root.height*.95
+        size_hint:(1,None)
+        valign: 'middle'
+        halign: 'center'
+        text_size:root.width, root.height
+        
+    GridLayout:
+        cols: 4
+        id: footer
+        padding:5
+        spacing:5
+        size_hint: (1,None)
+        height:root.height* 0.1
+
+        Widget:
+        Button:
+            id:start
+            bold:True
+            text: 'Start'
+            font_size:'25sp'
+            background_color:.4,.4,5,1
+            on_release:app.timer_start()
+            size_hint_x : None
+            width:root.width *0.3
+        
+        Button:
+            id:reset
+            bold:True
+            text: 'Reset'
+            font_size:'25sp'
+            background_color:4, 0, 0, 1
+            on_release:app.timer_reset()
+            size_hint_x : None
+            width:root.width *0.3
+        Widget:
+
 <TimerScreen>:
     name:'timer'
     Label:
@@ -51,24 +92,39 @@
     
     ScreenManagerClass:
         id:screen_manager
+    
+    ## Line break
+    Label:
+        canvas.before:
+            Color:
+                rgba:0,0,1,1
+            Rectangle:
+                pos:self.pos
+                size:self.size
+
+        height:2
+        size_hint:(1,None)
+
     ## Screeen change buttons 
     GridLayout:
         cols:3
-        padding: 5
-        spacing: 5
-        height: root.height *0.05
+        height: root.height *0.08
         size_hint: (1,None)
+        background_color: .4, .4, .4, 1
         
         Button:
             text: 'Clock'
+            color:0, 0, 1, 1
             background_color: .1, .1, .1, 1
             on_release:app.click('clock','right')
         Button:
             text: 'Stopwatch'
+            color:0, 0, 1, 1
             background_color: .1, .1, .1, 1
             on_release: app.click('stopwatch','down')
         Button:
             text: 'Timer'
+            color:0, 0, 1, 1
             background_color: .1, .1, .1, 1
             on_release: app.click('timer','left')
     ## Line break
@@ -86,4 +142,3 @@
     Label:
         size_hint:(1,None)
         height:20
-        
