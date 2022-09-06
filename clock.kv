@@ -1,0 +1,82 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<ClockScreen>:
+    name:'_clock_'
+    Label:
+        bold:True
+        text: '00:00:00'
+        id : show_time
+        markup: True
+        font_size: '60sp'
+        color:1,1,1,1
+        height:root.height*.76
+        size_hint:(1,None)
+        valign: 'middle'
+        halign: 'center'
+        text_size:root.width, root.height
+<StopWatchScreen>:
+    name:'_stopwatch_'
+    Label:
+        text:'hi'
+<TimerScreen>:
+    name:'_timer_'
+
+<ScreenManagerClass>:
+    transition: NoTransition()
+    ClockScreen:
+    StopWatchScreen:
+    TimerScreen:
+
+<Main>:
+    cols:1
+    Label:
+        id:header
+        halign: 'left'
+        valign: 'middle'
+        size_hint: (1,None)
+        text_size: root.size
+        height: root.height *0.1
+    ## Line break
+    Label:
+        canvas.before:
+            Color:
+                rgba:0,0,1,1
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        height:2
+        size_hint:(1,None)
+    ScreenManagerClass:
+    GridLayout:
+        cols:3
+        padding: 5
+        spacing: 5
+        height: root.height *0.05
+        size_hint: (1,None)
+        
+        Button:
+            text: 'Clock'
+            background_color: .1, .1, .1, 1
+            on_press: 
+        Button:
+            text: 'Stopwatch'
+            background_color: .1, .1, .1, 1
+            on_press: root.manager.current = "_stopwatch_"
+        Button:
+            text: 'Timer'
+            background_color: .1, .1, .1, 1
+    ## Line break
+    Label:
+        canvas.before:
+            Color:
+                rgba:0,0,1,1
+            Rectangle:
+                pos:self.pos
+                size:self.size
+
+        height:2
+        size_hint:(1,None)
+    Label:
+        size_hint:(1,None)
+        height:20
+        
