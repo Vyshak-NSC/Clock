@@ -8,8 +8,7 @@ from kivy.properties import ObjectProperty
 kivy.require('2.1.0')
 
 class Main(GridLayout):
-    pass
-
+    screen_manager = ObjectProperty()
 
 class ClockScreen(Screen):
     pass
@@ -25,8 +24,10 @@ class ScreenManagerClass(ScreenManager):
 
 class ClockApp(App):
     def build(self):
-        #self.root = Main()
-        return Main()
-    
+        self.all = Main()
+        return self.all
+        
+    def click(self):
+        self.all.ids['screen_manager'].current = 'stopwatch'
 if __name__ == '__main__':
     ClockApp().run()

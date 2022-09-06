@@ -1,7 +1,7 @@
 #:import NoTransition kivy.uix.screenmanager.NoTransition
 
 <ClockScreen>:
-    name:'_clock_'
+    name:'clock'
     Label:
         bold:True
         text: '00:00:00'
@@ -15,20 +15,21 @@
         halign: 'center'
         text_size:root.width, root.height
 <StopWatchScreen>:
-    name:'_stopwatch_'
+    name:'stopwatch'
     Label:
-        text:'hi'
+        text:'stopwatch'
 <TimerScreen>:
-    name:'_timer_'
+    name:'timer'
+    Label:
+        text:'timer'
 
 <ScreenManagerClass>:
-    transition: NoTransition()
-    current: '_stopwatch_'
     ClockScreen:
     StopWatchScreen:
     TimerScreen:
 
 <Main>:
+    screen_manager: screen_manager
     cols:1
     Label:
         id:header
@@ -47,7 +48,10 @@
                 size:self.size
         height:2
         size_hint:(1,None)
+    
     ScreenManagerClass:
+        id:screen_manager
+    ## Screeen change buttons 
     GridLayout:
         cols:3
         padding: 5
@@ -58,10 +62,10 @@
         Button:
             text: 'Clock'
             background_color: .1, .1, .1, 1
-            on_release: app.goto_stopwatch() #ScreenManagerClass.current = '_clock_'
         Button:
             text: 'Stopwatch'
             background_color: .1, .1, .1, 1
+            on_release: app.click()
         Button:
             text: 'Timer'
             background_color: .1, .1, .1, 1
@@ -76,6 +80,7 @@
 
         height:2
         size_hint:(1,None)
+    ## Empty
     Label:
         size_hint:(1,None)
         height:20
