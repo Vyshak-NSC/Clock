@@ -23,6 +23,7 @@
 
 <ScreenManagerClass>:
     transition: NoTransition()
+    current: '_stopwatch_'
     ClockScreen:
     StopWatchScreen:
     TimerScreen:
@@ -57,11 +58,10 @@
         Button:
             text: 'Clock'
             background_color: .1, .1, .1, 1
-            on_press: 
+            on_release: app.goto_stopwatch() #ScreenManagerClass.current = '_clock_'
         Button:
             text: 'Stopwatch'
             background_color: .1, .1, .1, 1
-            on_press: root.manager.current = "_stopwatch_"
         Button:
             text: 'Timer'
             background_color: .1, .1, .1, 1

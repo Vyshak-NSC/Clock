@@ -4,7 +4,7 @@ from kivy.clock import Clock
 from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
-
+from kivy.properties import ObjectProperty
 kivy.require('2.1.0')
 
 class Main(GridLayout):
@@ -25,8 +25,8 @@ class ScreenManagerClass(ScreenManager):
 
 class ClockApp(App):
     def build(self):
-        self.root = Main()
-        return self.root
-
+        #self.root = Main()
+        return Main()
+    
 if __name__ == '__main__':
     ClockApp().run()
