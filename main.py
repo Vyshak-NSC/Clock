@@ -23,11 +23,16 @@ class ScreenManagerClass(ScreenManager):
     pass
 
 class ClockApp(App):
+    prev_scr = 'clock'
     def build(self):
-        self.all = Main()
-        return self.all
+        self.main = Main()
+        return self.main
         
-    def click(self):
-        self.all.ids['screen_manager'].current = 'stopwatch'
+    def click(self,scr_name, direction='left'):
+        if scr_name == 'stopwatch':
+            direction = ('left' if self.prev_scr == 'clock' else 'right')
+        self.main.ids['screen_manager'].current = scr_name
+        self.main.ids['screen_manager'].transition.direction = direction
+        self.prev_scr = scr_name
 if __name__ == '__main__':
     ClockApp().run()

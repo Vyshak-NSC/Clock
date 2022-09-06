@@ -62,13 +62,15 @@
         Button:
             text: 'Clock'
             background_color: .1, .1, .1, 1
+            on_release:app.click('clock','right')
         Button:
             text: 'Stopwatch'
             background_color: .1, .1, .1, 1
-            on_release: app.click()
+            on_release: app.click('stopwatch','down')
         Button:
             text: 'Timer'
             background_color: .1, .1, .1, 1
+            on_release: app.click('timer','left')
     ## Line break
     Label:
         canvas.before:
