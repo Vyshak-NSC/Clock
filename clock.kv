@@ -62,7 +62,16 @@
 <TimerScreen>:
     name:'timer'
     Label:
-        text:'timer'
+        bold:True
+        text: '00:00:00'
+        markup: True
+        font_size: '60sp'
+        color:1,1,1,1
+        height:root.height*.95
+        size_hint:(1,None)
+        valign: 'middle'
+        halign: 'center'
+        text_size:root.width, root.height
 
 <ScreenManagerClass>:
     ClockScreen:
