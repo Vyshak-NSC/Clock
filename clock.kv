@@ -44,7 +44,7 @@
             text: 'Start'
             font_size:'25sp'
             background_color:.4,.4,5,1
-            on_release:app.timer_start()
+            on_release:app.stopwatch_start()
             size_hint_x : None
             width:root.width *0.3
         
@@ -54,7 +54,7 @@
             text: 'Reset'
             font_size:'25sp'
             background_color:4, 0, 0, 1
-            on_release:app.timer_reset()
+            on_release:app.stopwatch_reset()
             size_hint_x : None
             width:root.width *0.3
         Widget:

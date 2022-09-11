@@ -31,7 +31,8 @@ class ClockApp(App):
     def build(self):
         self.main = Main()
         return self.main
-        
+    
+    
     def click(self,scr_name, direction='left'):
         if scr_name == 'stopwatch':
             direction = ('left' if self.prev_scr == 'clock' else 'right')
@@ -50,11 +51,11 @@ class ClockApp(App):
         
         self.main.ids['screen_manager'].get_screen('stopwatch').ids['stopwatch'].text = strftime('%02d:%02d:%02d' % (int(minutes), int(seconds), int(seconds*100 %100)))
 
-    def timer_start(self):
+    def stopwatch_start(self):
         self.main.ids['screen_manager'].get_screen('stopwatch').ids['start'].text = ('Start' if self.started else 'Stop')
         self.started = not self.started
     
-    def timer_reset(self):
+    def stopwatch_reset(self):
         if self.started:
             self.started = False
             self.main.ids['screen_manager'].get_screen('stopwatch').ids['start'].text = 'Start'
